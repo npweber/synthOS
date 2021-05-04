@@ -25,7 +25,7 @@
         app:titleTextColor="#040404">
 
         <Button
-            android:id="@+id/imageButton"
+            android:id="@+id/libraryButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="end"
@@ -64,7 +64,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/sizeSlider"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="169dp"
         android:layout_height="65dp"
@@ -72,15 +72,14 @@
         android:layout_marginTop="261dp"
         android:layout_marginEnd="226dp"
         android:layout_marginBottom="405dp"
-        android:max="10"
-        android:progress="3"
+        android:max="@integer/numSizes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
-        android:id="@+id/seekBar3"
+        android:id="@+id/keySlider"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="169dp"
         android:layout_height="65dp"
@@ -88,15 +87,14 @@
         android:layout_marginTop="409dp"
         android:layout_marginEnd="226dp"
         android:layout_marginBottom="257dp"
-        android:max="10"
-        android:progress="3"
+        android:max="@integer/numNoteTypes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/speedSlider"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="163dp"
         android:layout_height="68dp"
@@ -104,38 +102,21 @@
         android:layout_marginTop="261dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="402dp"
-        android:max="10"
-        android:progress="3"
+        android:max="@integer/numSpeeds"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="124dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="271dp"
-        android:layout_marginTop="410dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="290dp"
-        android:text="@string/orderingAscending"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="124dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="271dp"
-        android:layout_marginTop="442dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="258dp"
-        android:text="@string/orderingDescending"
-        android:textSize="14sp"
+    <Spinner
+        android:id="@+id/orderingSelect"
+        android:layout_width="162dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="232dp"
+        android:layout_marginTop="409dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="277dp"
+        android:entries="@array/orderings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

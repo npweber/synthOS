@@ -10,15 +10,14 @@
     <string name="keySelectionLabel">Key Range</string>
     <string name="orderingLabel">Melodic Order</string>
 
-    <string name="orderingAscending">Ascending</string>
-    <string name="orderingDescending">Descending</string>
-
     <string-array name="synthesizers">
         <item>Square Wavefront</item>
     </string-array>
     <string-array name="noteTypes">
         <item>High</item>
+        <item>Medium High</item>
         <item>Balanced</item>
+        <item>Medium Low</item>
         <item>Low</item>
     </string-array>
     <string-array name="sizes">
@@ -33,5 +32,9 @@
         <item>Medium Fast</item>
         <item>Moderate</item>
         <item>Slow</item>
+    </string-array>
+    <string-array name="orderings">
+        <item>Ascending</item>
+        <item>Descending</item>
     </string-array>
 </resources>
