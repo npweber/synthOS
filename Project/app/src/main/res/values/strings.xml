@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">synthOS</string>
+
+    <string name="generateLabel">Generate</string>
+    <string name="libraryLabel">Library</string>
+
+    <string name="synthesizerLabel">Synthesizer</string>
+    <string name="loopLengthLabel">Loop Length</string>
+    <string name="tempoLabel">Tempo</string>
+    <string name="keySelectionLabel">Key Range</string>
+    <string name="orderingLabel">Melodic Order</string>
+
+    <string name="orderingAscending">Ascending</string>
+    <string name="orderingDescending">Descending</string>
+
+    <string-array name="synthesizers">
+        <item>Square Wavefront</item>
+    </string-array>
+    <string-array name="noteTypes">
+        <item>High</item>
+        <item>Balanced</item>
+        <item>Low</item>
+    </string-array>
+    <string-array name="sizes">
+        <item>Small</item>
+        <item>Medium Small</item>
+        <item>Medium</item>
+        <item>Medium Large</item>
+        <item>Large</item>
+    </string-array>
+    <string-array name="speeds">
+        <item>Fast</item>
+        <item>Medium Fast</item>
+        <item>Moderate</item>
+        <item>Slow</item>
+    </string-array>
 </resources>
