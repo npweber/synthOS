@@ -11,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import edu.csuci.nw068.snth.R;
 
-import npwd.tech.msnth.pattern.Durations;
-import npwd.tech.msnth.pattern.Sizes;
-import npwd.tech.msnth.toning.Ordering;
-import tmp.KeyRanges;
+import tech.npwd.msnth.pattern.Durations;
+import tech.npwd.msnth.pattern.Sizes;
+import tech.npwd.msnth.toning.Ordering;
+import tech.npwd.msnth.util.keysel.KeyRanges;
 
 public class GenerationUX extends AppCompatActivity {
 
@@ -70,19 +70,10 @@ public class GenerationUX extends AppCompatActivity {
 
         private GenerationUXInput(){
             this.synthesizer = synthesizerSpinnerState;
-
             this.size = Sizes.values()[sizeSliderState];
-
-            int durationsIndex = indexAlignSpeedNumber(speedSliderState);
-            this.speed = Durations.values()[durationsIndex];
-
+            this.speed = Durations.values()[speedSliderState];
             this.keyRange = KeyRanges.values()[keysSliderState];
             this.ordering = Ordering.valueOf(orderingSpinnerState.toUpperCase());
-        }
-
-        private int indexAlignSpeedNumber(int speedNumber){
-            int lastIndex = Durations.values().length - 1;
-            return lastIndex - speedNumber * 2;
         }
     }
 

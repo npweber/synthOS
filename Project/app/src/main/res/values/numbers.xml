@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="numSizes">4</integer>
+    <integer name="numSizes">3</integer>
     <integer name="numNoteTypes">4</integer>
     <integer name="numSpeeds">3</integer>
 
