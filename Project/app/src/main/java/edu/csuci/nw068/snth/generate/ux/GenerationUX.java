@@ -2,6 +2,7 @@ package edu.csuci.nw068.snth.generate.ux;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import edu.csuci.nw068.snth.R;
 
+import edu.csuci.nw068.snth.generate.Generation;
 import tech.npwd.msnth.pattern.Durations;
 import tech.npwd.msnth.pattern.Sizes;
 import tech.npwd.msnth.toning.Ordering;
@@ -45,6 +47,9 @@ public class GenerationUX extends AppCompatActivity {
         this.sizeSlider.setOnSeekBarChangeListener(sliderToastHandler);
         this.speedSlider.setOnSeekBarChangeListener(sliderToastHandler);
         this.keysSlider.setOnSeekBarChangeListener(sliderToastHandler);
+
+        GenerationTriggerHandler generationTriggerHandler = new GenerationTriggerHandler(this);
+        findViewById(R.id.generateTrigger).setOnClickListener(generationTriggerHandler);
     }
 
     public GenerationUXInput getInputs(){
@@ -135,5 +140,20 @@ public class GenerationUX extends AppCompatActivity {
 
         @Override public void onStartTrackingTouch(SeekBar seekBar) {}
         @Override public void onStopTrackingTouch(SeekBar seekBar) {}
+    }
+
+    private static class GenerationTriggerHandler implements View.OnClickListener {
+
+        private final GenerationUX generationUX;
+
+        private GenerationTriggerHandler(GenerationUX generationUX){
+            this.generationUX = generationUX;
+        }
+
+        @Override
+        public void onClick(View v) {
+            Generation generation = new Generation(this.generationUX);
+            generation.generateLoop();
+        }
     }
 }
