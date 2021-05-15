@@ -11,7 +11,7 @@
     <string name="orderingLabel">Melodic Order</string>
 
     <string-array name="synthesizers">
-        <item>Square Wave</item>
+        <item>sampleSoundfont</item>
     </string-array>
     <string-array name="noteTypes">
         <item>High</item>

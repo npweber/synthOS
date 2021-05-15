@@ -1,2 +1,2 @@
-include ':app', 'sherlockmidi', ':musynth'
+include ':app', 'sherlockmidi'
 rootProject.name = "synthOS"

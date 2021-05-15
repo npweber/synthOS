@@ -14,7 +14,7 @@ import edu.csuci.nw068.snth.R;
 import tech.npwd.msnth.pattern.Durations;
 import tech.npwd.msnth.pattern.Sizes;
 import tech.npwd.msnth.toning.Ordering;
-import tech.npwd.msnth.util.keysel.KeyRanges;
+import tech.npwd.msnth.key.KeyRanges;
 
 public class GenerationUX extends AppCompatActivity {
 
@@ -37,17 +37,17 @@ public class GenerationUX extends AppCompatActivity {
         this.speedSlider = findViewById(R.id.speedSlider);
         this.keysSlider = findViewById(R.id.keySlider);
 
-        setupToast();
+        setupHandlers();
     }
 
-    private void setupToast(){
+    private void setupHandlers(){
         SliderToastHandler sliderToastHandler = new SliderToastHandler();
         this.sizeSlider.setOnSeekBarChangeListener(sliderToastHandler);
         this.speedSlider.setOnSeekBarChangeListener(sliderToastHandler);
         this.keysSlider.setOnSeekBarChangeListener(sliderToastHandler);
     }
 
-    private GenerationUXInput getInputs(){
+    public GenerationUXInput getInputs(){
         Spinner synthesizerSpinner = findViewById(R.id.synthesizerSelect);
         synthesizerSpinnerState = (String) synthesizerSpinner.getSelectedItem();
 
@@ -61,7 +61,7 @@ public class GenerationUX extends AppCompatActivity {
         return new GenerationUXInput();
     }
 
-    private class GenerationUXInput {
+    public class GenerationUXInput {
         private final String synthesizer;
         private final Sizes size;
         private final Durations speed;
@@ -74,6 +74,26 @@ public class GenerationUX extends AppCompatActivity {
             this.speed = Durations.values()[speedSliderState];
             this.keyRange = KeyRanges.values()[keysSliderState];
             this.ordering = Ordering.valueOf(orderingSpinnerState.toUpperCase());
+        }
+
+        public String getSynthesizer() {
+            return synthesizer;
+        }
+
+        public Sizes getSize() {
+            return size;
+        }
+
+        public Durations getSpeed() {
+            return speed;
+        }
+
+        public Ordering getOrdering() {
+            return ordering;
+        }
+
+        public KeyRanges getKeyRange() {
+            return keyRange;
         }
     }
 

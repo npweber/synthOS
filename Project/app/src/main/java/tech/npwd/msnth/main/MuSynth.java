@@ -1,8 +1,8 @@
 package tech.npwd.msnth.main;
 
-import cn.sherlock.com.sun.media.sound.SF2Soundbank;
 import cn.sherlock.com.sun.media.sound.SoftSynthesizer;
 
+import edu.csuci.nw068.snth.generate.Generation;
 import tech.npwd.roots.*;
 
 import tech.npwd.msnth.generation.Generator;
@@ -10,7 +10,6 @@ import tech.npwd.msnth.pattern.Planner;
 import tech.npwd.msnth.toning.*;
 
 import jp.kshoji.javax.sound.midi.*;
-import java.io.*;
 
 import static tech.npwd.roots.Printer.*;
 import static tech.npwd.roots.Sleeper.sleep;
@@ -22,7 +21,7 @@ public class MuSynth {
     private final static String version = "1_1";
 
     private static Argumenter argumenter;
-    private final static String[] parameters = { "-keys", "-sb", "-spd", "-sz", "-ord" };
+    private final static String[] parameters = { "-keys", "-spd", "-sz", "-ord" };
 
     //Program init
     public static void main(String[] args) {
@@ -68,7 +67,9 @@ public class MuSynth {
                 //Generate the note
                 new Generator(synthesizer, note.getKey(), note.getDuration(), notes.indexOf(note) + 1);
                 //FIX: Sleep extra on the last note to prevent chop off
-                if(notes.indexOf(note) == (notes.size() - 1)) { sleep(notes.get(notes.size() - 1).getDuration()); }
+                if(notes.indexOf(note) == (notes.size() - 1)) {
+                    sleep(notes.get(notes.size() - 1).getDuration());
+                }
             });
         } catch (MidiUnavailableException e){
             printError("Error in MidiGeneration. Troubleshooting is necessary.", e);
@@ -77,30 +78,21 @@ public class MuSynth {
 
     //Customize Synthesizer to play a custom instrument
     private void customizeSynthesizer(SoftSynthesizer synthesizer){
-        /*
-        try {
-            //Load Instrument
-            SF2Soundbank soundbank = new SF2Soundbank();
-            synthesizer.loadAllInstruments(soundbank);
+        //Load Instrument
+        synthesizer.loadAllInstruments(Generation.getSoundbank());
 
-            //Log Instrument In-Use Readably
-            print("Using Instrument \"" + synthesizer.getLoadedInstruments()[0].getName() + "\"\n");
-            sleep(600);
+        //Log Instrument In-Use Readably
+        print("Using Instrument \"" + synthesizer.getLoadedInstruments()[0].getName() + "\"\n");
+        sleep(600);
 
-            //Change to the instrument
-            synthesizer.getChannels()[0].programChange(0);
-            synthesizer.getChannels()[1].programChange(1);
-        } catch (IOException e){
-            printError("Error in setting up Synthesizer. Troubleshooting is necessary.", e);
-        }
-        */
+        //Change to the instrument
+        synthesizer.getChannels()[0].programChange(0);
+        synthesizer.getChannels()[1].programChange(1);
     }
 
     //Greets the user upon the program init
     private static void greet() {
         print("Starting MuSynth v" + version + "...");
-        sleep(600);
-        print("Using Soundbank \"" + argumenter.getValue("-sb") + "\"");
         sleep(600);
         print("Inputted Keys: " + argumenter.getValue("-keys"));
         sleep(600);
