@@ -42,7 +42,7 @@ public class Generation {
         Grouper<String> argsGrouper = new Grouper<>();
         argsGrouper.add("-keys");
 
-        AutoKeySelect autoKeySelect = new AutoKeySelect(inputs.getKeyRange());
+        AutoKeySelect autoKeySelect = new AutoKeySelect(inputs);
         argsGrouper.add(autoKeySelect.getKeysSelected());
 
         String otherArgs = "-spd " +
