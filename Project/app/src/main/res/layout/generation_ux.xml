@@ -24,12 +24,14 @@
         app:titleTextAppearance="@style/TextAppearance.AppCompat.Large"
         app:titleTextColor="#040404">
 
-        <Button
+        <ImageButton
             android:id="@+id/libraryButton"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
             android:layout_gravity="end"
-            android:text="@string/libraryLabel" />
+            android:contentDescription="@string/libraryImageDesc"
+            android:src="@android:drawable/ic_input_get"
+            tools:layout_editor_absoluteX="388dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
