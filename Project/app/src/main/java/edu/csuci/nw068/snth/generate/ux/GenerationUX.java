@@ -1,6 +1,7 @@
 package edu.csuci.nw068.snth.generate.ux;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.SeekBar;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.csuci.nw068.snth.R;
 
 import edu.csuci.nw068.snth.generate.Generation;
+import edu.csuci.nw068.snth.playback.ux.PlaybackUX;
 import tech.npwd.msnth.pattern.Durations;
 import tech.npwd.msnth.pattern.Sizes;
 import tech.npwd.msnth.toning.Ordering;
@@ -152,8 +154,11 @@ public class GenerationUX extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
-            Generation generation = new Generation(this.generationUX);
+            Generation generation = new Generation(generationUX);
             generation.generateLoop();
+
+            PlaybackUX playbackDialog = new PlaybackUX(generationUX, generation);
+            playbackDialog.show();
         }
     }
 }

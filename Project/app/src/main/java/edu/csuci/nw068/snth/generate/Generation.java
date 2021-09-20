@@ -1,5 +1,6 @@
 package edu.csuci.nw068.snth.generate;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -11,6 +12,8 @@ import tech.npwd.msnth.key.AutoKeySelect;
 import tech.npwd.roots.Grouper;
 
 public class Generation {
+
+    private MuSynth muSynth;
 
     private static SF2Soundbank soundbank;
 
@@ -57,6 +60,15 @@ public class Generation {
             args[i] = argsGrouper.get(i);
 
         MuSynth.main(args);
+        muSynth = new MuSynth();
+    }
+
+    public void playLoop(){
+        muSynth.play();
+    }
+
+    public void saveLoop(File file){
+        muSynth.save(file);
     }
 
     public static SF2Soundbank getSoundbank() {

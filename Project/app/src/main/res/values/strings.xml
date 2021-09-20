@@ -6,7 +6,11 @@
     <string name="playbackPlayButtonLabel">Play</string>
     <string name="shareButtonLabel">Share</string>
     <string name="saveButtonLabel">Save</string>
+
     <string name="libraryImageDesc">Library</string>
+    <string name="playImageDesc">Play</string>
+    <string name="saveImageDesc">Save</string>
+    <string name="shareImageDesc">Share</string>
 
     <string name="synthesizerLabel">Synthesizer</string>
     <string name="loopLengthLabel">Loop Length</string>
@@ -14,6 +18,7 @@
     <string name="keySelectionLabel">Key Range</string>
     <string name="orderingLabel">Melodic Order</string>
 
+    <string name="saveToLibraryToast">Saved to Library</string>
     <string-array name="synthesizers">
         <item>sampleSoundfont</item>
     </string-array>

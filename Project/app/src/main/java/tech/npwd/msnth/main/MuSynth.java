@@ -14,6 +14,8 @@ import jp.kshoji.javax.sound.midi.*;
 import static tech.npwd.roots.Printer.*;
 import static tech.npwd.roots.Sleeper.sleep;
 
+import java.io.File;
+
 //MuSynth: Main of MuSynth
 
 public class MuSynth {
@@ -23,6 +25,8 @@ public class MuSynth {
     private static Argumenter argumenter;
     private final static String[] parameters = { "-keys", "-spd", "-sz", "-ord" };
 
+    private final Grouper<Note> notes;
+
     //Program init
     public static void main(String[] args) {
         //Intake arguments
@@ -30,13 +34,10 @@ public class MuSynth {
 
         //Greet the user with the initialization msg
         greet();
-
-        //Start Program Protocol
-        new MuSynth();
     }
 
     //Main Constructor
-    private MuSynth(){
+    public MuSynth(){
         //Create pattern
         Planner pattern = new Planner();
 
@@ -44,17 +45,11 @@ public class MuSynth {
         Placer formattedPattern = new Placer(pattern);
 
         //Get Note Sequence from Formatted Pattern
-        Grouper<Note> notes = formattedPattern.createNoteSequence();
-
-        //Play the note sequence
-        play(notes);
-
-        //Exit with msg
-        print("Finished Generation from Given Instruction - Exiting MuSynth...");
+        notes = formattedPattern.createNoteSequence();
     }
 
     //Play the sequence until the user wants to continue
-    private void play(Grouper<Note> notes){
+    public void play(){
         try {
             //Init custom synthesizer
             SoftSynthesizer synthesizer = new SoftSynthesizer();
@@ -71,9 +66,18 @@ public class MuSynth {
                     sleep(notes.get(notes.size() - 1).getDuration());
                 }
             });
+
         } catch (MidiUnavailableException e){
             printError("Error in MidiGeneration. Troubleshooting is necessary.", e);
         }
+    }
+
+    public void save(File file){
+        Writer writer = new Writer(file);
+        notes.forEach(note ->
+            writer.write(note.getKey() + " " + note.getDuration() + "\n")
+        );
+        writer.finalizeFile();
     }
 
     //Customize Synthesizer to play a custom instrument
