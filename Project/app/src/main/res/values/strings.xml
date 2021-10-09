@@ -2,15 +2,17 @@
     <string name="app_name">synthOS</string>
 
     <string name="generateLabel">Generate</string>
-    <string name="loopDisplayLabel">Loop Display</string>
     <string name="playbackPlayButtonLabel">Play</string>
     <string name="shareButtonLabel">Share</string>
     <string name="saveButtonLabel">Save</string>
 
     <string name="libraryImageDesc">Library</string>
+    <string name="loopDisplayDesc">Loop Display</string>
     <string name="playImageDesc">Play</string>
     <string name="saveImageDesc">Save</string>
     <string name="shareImageDesc">Share</string>
+
+    <string name="playbackHeader">Play Loop</string>
 
     <string name="synthesizerLabel">Synthesizer</string>
     <string name="loopLengthLabel">Loop Length</string>

@@ -37,12 +37,6 @@ public class PlaybackUX extends Dialog {
     private void setupHandlers(){
         PlayTriggerHandler playTriggerHandler = new PlayTriggerHandler(generation);
         findViewById(R.id.playButton).setOnClickListener(playTriggerHandler);
-
-        ShareTriggerHandler shareTriggerHandler = new ShareTriggerHandler();
-        findViewById(R.id.shareButton).setOnClickListener(shareTriggerHandler);
-
-        SaveTriggerHandler saveTriggerHandler = new SaveTriggerHandler(generation, generationUX);
-        findViewById(R.id.saveButton).setOnClickListener(saveTriggerHandler);
     }
 
     private static class PlayTriggerHandler implements View.OnClickListener {

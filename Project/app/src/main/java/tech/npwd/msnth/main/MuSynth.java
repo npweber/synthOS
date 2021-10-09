@@ -111,9 +111,11 @@ public class MuSynth {
     }
 
     //Intake of program arguments
-    private static void intakeArgs(String[] args){
+    private static void intakeArgs(String[] args) {
         //Intake from Argumenter
-        argumenter = new Argumenter(new Grouper<String>(){{ importFromArray(parameters); }});
+        argumenter = new Argumenter(new Grouper<String>() {{
+            importFromArray(parameters);
+        }});
         argumenter.intake(args);
     }
 
