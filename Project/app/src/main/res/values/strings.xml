@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">synthOS</string>
+
+    <string name="generateLabel">Generate</string>
+    <string name="playbackPlayButtonLabel">Play</string>
+    <string name="shareButtonLabel">Share</string>
+    <string name="saveButtonLabel">Save</string>
+
+    <string name="libraryImageDesc">Library</string>
+    <string name="loopDisplayDesc">Loop Display</string>
+    <string name="playImageDesc">Play</string>
+    <string name="saveImageDesc">Save</string>
+    <string name="shareImageDesc">Share</string>
+
+    <string name="playbackHeader">Play Loop</string>
+
+    <string name="synthesizerLabel">Synthesizer</string>
+    <string name="loopLengthLabel">Loop Length</string>
+    <string name="tempoLabel">Tempo</string>
+    <string name="keySelectionLabel">Key Range</string>
+    <string name="orderingLabel">Melodic Order</string>
+
+    <string name="saveToLibraryToast">Saved to Library</string>
+    <string-array name="synthesizers">
+        <item>sampleSoundfont</item>
+    </string-array>
+    <string-array name="noteTypes">
+        <item>High</item>
+        <item>Medium High</item>
+        <item>Balanced</item>
+        <item>Medium Low</item>
+        <item>Low</item>
+    </string-array>
+    <string-array name="sizes">
+        <item>Small</item>
+        <item>Medium Small</item>
+        <item>Medium</item>
+        <item>Medium Large</item>
+        <item>Large</item>
+    </string-array>
+    <string-array name="speeds">
+        <item>Fast</item>
+        <item>Medium Fast</item>
+        <item>Moderate</item>
+        <item>Slow</item>
+    </string-array>
+    <string-array name="orderings">
+        <item>Ascending</item>
+        <item>Descending</item>
+    </string-array>
+</resources>
