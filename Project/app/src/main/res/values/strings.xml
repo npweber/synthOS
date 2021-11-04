@@ -2,25 +2,17 @@
     <string name="app_name">synthOS</string>
 
     <string name="generateLabel">Generate</string>
-    <string name="playbackPlayButtonLabel">Play</string>
-    <string name="shareButtonLabel">Share</string>
-    <string name="saveButtonLabel">Save</string>
-
-    <string name="libraryImageDesc">Library</string>
     <string name="loopDisplayDesc">Loop Display</string>
     <string name="playImageDesc">Play</string>
-    <string name="saveImageDesc">Save</string>
-    <string name="shareImageDesc">Share</string>
 
     <string name="playbackHeader">Play Loop</string>
 
-    <string name="synthesizerLabel">Synthesizer</string>
-    <string name="loopLengthLabel">Loop Length</string>
-    <string name="tempoLabel">Tempo</string>
-    <string name="keySelectionLabel">Key Range</string>
-    <string name="orderingLabel">Melodic Order</string>
+    <string name="synthesizerLabel">SELECT SYNTH</string>
+    <string name="lengthLabel">LOOP SZ</string>
+    <string name="tempoLabel">LOOP TEMPO</string>
+    <string name="keySelectionLabel">LOOP KEY RNG</string>
+    <string name="orderingLabel">LOOP PITCH ORD</string>
 
-    <string name="saveToLibraryToast">Saved to Library</string>
     <string-array name="synthesizers">
         <item>sampleSoundfont</item>
     </string-array>

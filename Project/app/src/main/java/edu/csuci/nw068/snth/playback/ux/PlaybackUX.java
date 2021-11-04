@@ -51,37 +51,4 @@ public class PlaybackUX extends Dialog {
             generation.playLoop();
         }
     }
-
-    private static class ShareTriggerHandler implements View.OnClickListener {
-        @Override
-        public void onClick(View v){
-            //TODO: Implement Loop Sharing
-        }
-    }
-
-    private static class SaveTriggerHandler implements View.OnClickListener {
-        private final Generation generation;
-        private final GenerationUX generationUX;
-
-        private SaveTriggerHandler(Generation generation, GenerationUX generationUX){
-            this.generation = generation;
-            this.generationUX = generationUX;
-        }
-
-        @Override
-        public void onClick(View v){
-            saveLoopToLibrary();
-
-            int toastDuration = generationUX.getResources().getInteger(R.integer.toastDuration);
-            Toast saveToast = Toast.makeText(generationUX, R.string.saveToLibraryToast, toastDuration);
-            saveToast.show();
-        }
-
-        private void saveLoopToLibrary(){
-            String tempPath = "androidFilePath";
-            File loopMidiFile = new File(tempPath);
-            //TODO: Enable when Library File Space Exists
-            //generation.saveLoop(loopMidiFile);
-        }
-    }
 }
