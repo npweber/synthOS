@@ -24,11 +24,14 @@
         <item>Low</item>
     </string-array>
     <string-array name="sizes">
-        <item>Small</item>
-        <item>Medium Small</item>
-        <item>Medium</item>
-        <item>Medium Large</item>
-        <item>Large</item>
+        <item>THREE</item>
+        <item>FOUR</item>
+        <item>FIVE</item>
+        <item>SIX</item>
+        <item>SEVEN</item>
+        <item>EIGHT</item>
+        <item>NINE</item>
+        <item>TEN</item>
     </string-array>
     <string-array name="speeds">
         <item>Fast</item>

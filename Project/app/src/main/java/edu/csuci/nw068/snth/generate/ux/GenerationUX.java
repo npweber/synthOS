@@ -110,7 +110,7 @@ public class GenerationUX extends AppCompatActivity {
 
     private class SliderToastHandler implements SeekBar.OnSeekBarChangeListener {
 
-        private static final String sizeToast = "%d Notes in Loop";
+        private static final String sizeToast = "%s Notes in Loop";
         private static final String speedToast = "%s Tempo";
         private static final String keysToast = "%s Key Range to Generate From";
 
@@ -123,8 +123,7 @@ public class GenerationUX extends AppCompatActivity {
                 case R.id.sizeSlider: {
                     toastString = sizeToast;
                     String sizeName = currentInputs.size.name();
-                    int numNotesOfSize = Sizes.useSize(sizeName);
-                    toastString = String.format(toastString, numNotesOfSize);
+                    toastString = String.format(toastString, sizeName);
                     break;
                 }
                 case R.id.speedSlider: {
