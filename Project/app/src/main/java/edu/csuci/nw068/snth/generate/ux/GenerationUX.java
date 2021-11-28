@@ -3,6 +3,7 @@ package edu.csuci.nw068.snth.generate.ux;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.SeekBar;
@@ -34,6 +35,8 @@ public class GenerationUX extends AppCompatActivity {
     private int keysSliderState;
     private String orderingSpinnerState;
 
+    private boolean userIsInteracting;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +50,12 @@ public class GenerationUX extends AppCompatActivity {
         setupHandlers();
     }
 
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        userIsInteracting = true;
+    }
+
     private void setupHandlers(){
         SliderToastHandler sliderToastHandler = new SliderToastHandler();
         this.sizeSlider.setOnSeekBarChangeListener(sliderToastHandler);
@@ -55,6 +64,7 @@ public class GenerationUX extends AppCompatActivity {
 
         SpinnerToastHandler orderSpinnerHandler = new SpinnerToastHandler();
         this.orderingSpinner.setOnItemSelectedListener(orderSpinnerHandler);
+        this.userIsInteracting = false;
 
         GenerationTriggerHandler generationTriggerHandler = new GenerationTriggerHandler(this);
         findViewById(R.id.generateTrigger).setOnClickListener(generationTriggerHandler);
@@ -153,12 +163,14 @@ public class GenerationUX extends AppCompatActivity {
 
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            GenerationUXInput currentInputs = getInputs();
-            final String toastString = "Notes played in " + currentInputs.ordering.name() + " order";
-            final int duration = getResources().getInteger(R.integer.toastDuration);
-            Toast toast = Toast.makeText(getApplicationContext(), toastString, duration);
+            if(userIsInteracting) {
+                GenerationUXInput currentInputs = getInputs();
+                final String toastString = "Notes played in " + currentInputs.ordering.name() + " order";
+                final int duration = getResources().getInteger(R.integer.toastDuration);
+                Toast toast = Toast.makeText(getApplicationContext(), toastString, duration);
 
-            toast.show();
+                toast.show();
+            }
         }
 
         @Override
