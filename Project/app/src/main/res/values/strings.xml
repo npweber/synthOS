@@ -4,6 +4,7 @@
     <string name="generateLabel">Generate</string>
     <string name="loopDisplayDesc">Loop Display</string>
     <string name="playImageDesc">Play</string>
+    <string name="loopPlayImageDesc">Loop Playback</string>
 
     <string name="playbackHeader">Play Loop</string>
 
