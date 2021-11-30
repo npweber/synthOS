@@ -3,6 +3,4 @@
     <integer name="numSizes">7</integer>
     <integer name="numNoteTypes">4</integer>
     <integer name="numSpeeds">3</integer>
-
-    <integer name="toastDuration">2</integer>
 </resources>

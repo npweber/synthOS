@@ -15,7 +15,7 @@
     <string name="orderingLabel">LOOP PITCH ORD</string>
 
     <string-array name="synthesizers">
-        <item>sampleSoundfont</item>
+        <item>squareLead</item>
     </string-array>
     <string-array name="noteTypes">
         <item>High</item>

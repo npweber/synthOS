@@ -1,6 +1,5 @@
 package edu.csuci.nw068.snth.generate;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -48,10 +47,9 @@ public class Generation {
         AutoKeySelect autoKeySelect = new AutoKeySelect(inputs);
         argsGrouper.add(autoKeySelect.getKeysSelected());
 
-        String otherArgs = "-spd " +
-                inputs.getSpeed() +
-                " -sz " + inputs.getSize() +
-                " -ord " + inputs.getOrdering();
+        String otherArgs = "-spd " + inputs.getSpeed()
+                + " -sz " + inputs.getSize()
+                + " -ord " + inputs.getOrdering();
 
         argsGrouper.addFromArray(otherArgs.split(" "));
 
@@ -65,10 +63,6 @@ public class Generation {
 
     public void playLoop(){
         muSynth.play();
-    }
-
-    public void saveLoop(File file){
-        muSynth.save(file);
     }
 
     public static SF2Soundbank getSoundbank() {

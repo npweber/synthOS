@@ -1,9 +1,7 @@
 package edu.csuci.nw068.snth.generate.ux;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.SeekBar;
@@ -150,8 +148,7 @@ public class GenerationUX extends AppCompatActivity {
             }
             toastString = toastString.replaceAll("_", " ");
 
-            int duration = getResources().getInteger(R.integer.toastDuration);
-            Toast toast = Toast.makeText(getApplicationContext(), toastString, duration);
+            Toast toast = Toast.makeText(getApplicationContext(), toastString, Toast.LENGTH_SHORT);
             toast.show();
         }
 
@@ -166,8 +163,7 @@ public class GenerationUX extends AppCompatActivity {
             if(userIsInteracting) {
                 GenerationUXInput currentInputs = getInputs();
                 final String toastString = "Notes played in " + currentInputs.ordering.name() + " order";
-                final int duration = getResources().getInteger(R.integer.toastDuration);
-                Toast toast = Toast.makeText(getApplicationContext(), toastString, duration);
+                Toast toast = Toast.makeText(getApplicationContext(), toastString, Toast.LENGTH_SHORT);
 
                 toast.show();
             }
