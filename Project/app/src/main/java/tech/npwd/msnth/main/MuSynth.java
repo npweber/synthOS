@@ -14,8 +14,6 @@ import jp.kshoji.javax.sound.midi.*;
 import static tech.npwd.roots.Printer.*;
 import static tech.npwd.roots.Sleeper.sleep;
 
-import java.io.File;
-
 //MuSynth: Main of MuSynth
 
 public class MuSynth {
@@ -70,14 +68,6 @@ public class MuSynth {
         } catch (MidiUnavailableException e){
             printError("Error in MidiGeneration. Troubleshooting is necessary.", e);
         }
-    }
-
-    public void save(File file){
-        Writer writer = new Writer(file);
-        notes.forEach(note ->
-            writer.write(note.getKey() + " " + note.getDuration() + "\n")
-        );
-        writer.finalizeFile();
     }
 
     //Customize Synthesizer to play a custom instrument

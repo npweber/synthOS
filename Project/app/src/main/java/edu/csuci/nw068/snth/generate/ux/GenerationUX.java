@@ -1,9 +1,9 @@
 package edu.csuci.nw068.snth.generate.ux;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -25,12 +25,15 @@ public class GenerationUX extends AppCompatActivity {
     private SeekBar sizeSlider;
     private SeekBar speedSlider;
     private SeekBar keysSlider;
+    private Spinner orderingSpinner;
 
     private String synthesizerSpinnerState;
     private int sizeSliderState;
     private int speedSliderState;
     private int keysSliderState;
     private String orderingSpinnerState;
+
+    private boolean userIsInteracting;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,8 +43,15 @@ public class GenerationUX extends AppCompatActivity {
         this.sizeSlider = findViewById(R.id.sizeSlider);
         this.speedSlider = findViewById(R.id.speedSlider);
         this.keysSlider = findViewById(R.id.keySlider);
+        this.orderingSpinner = findViewById(R.id.orderingSelect);
 
         setupHandlers();
+    }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        userIsInteracting = true;
     }
 
     private void setupHandlers(){
@@ -49,6 +59,10 @@ public class GenerationUX extends AppCompatActivity {
         this.sizeSlider.setOnSeekBarChangeListener(sliderToastHandler);
         this.speedSlider.setOnSeekBarChangeListener(sliderToastHandler);
         this.keysSlider.setOnSeekBarChangeListener(sliderToastHandler);
+
+        SpinnerToastHandler orderSpinnerHandler = new SpinnerToastHandler();
+        this.orderingSpinner.setOnItemSelectedListener(orderSpinnerHandler);
+        this.userIsInteracting = false;
 
         GenerationTriggerHandler generationTriggerHandler = new GenerationTriggerHandler(this);
         findViewById(R.id.generateTrigger).setOnClickListener(generationTriggerHandler);
@@ -61,8 +75,6 @@ public class GenerationUX extends AppCompatActivity {
         sizeSliderState = sizeSlider.getProgress();
         speedSliderState = speedSlider.getProgress();
         keysSliderState = keysSlider.getProgress();
-
-        Spinner orderingSpinner = findViewById(R.id.orderingSelect);
         orderingSpinnerState = (String) orderingSpinner.getSelectedItem();
 
         return new GenerationUXInput();
@@ -106,9 +118,9 @@ public class GenerationUX extends AppCompatActivity {
 
     private class SliderToastHandler implements SeekBar.OnSeekBarChangeListener {
 
-        private static final String sizeToast = "Size of Loop: %s";
-        private static final String speedToast = "Tempo of Loop: %s";
-        private static final String keysToast = "%s Keys to Generate From";
+        private static final String sizeToast = "%s Notes in Loop";
+        private static final String speedToast = "%s Tempo";
+        private static final String keysToast = "%s Key Range to Generate From";
 
         @SuppressLint("NonConstantResourceId")
         @Override
@@ -118,7 +130,8 @@ public class GenerationUX extends AppCompatActivity {
             switch (seekBar.getId()){
                 case R.id.sizeSlider: {
                     toastString = sizeToast;
-                    toastString = String.format(toastString, currentInputs.size);
+                    String sizeName = currentInputs.size.name();
+                    toastString = String.format(toastString, sizeName);
                     break;
                 }
                 case R.id.speedSlider: {
@@ -135,13 +148,29 @@ public class GenerationUX extends AppCompatActivity {
             }
             toastString = toastString.replaceAll("_", " ");
 
-            int duration = getResources().getInteger(R.integer.toastDuration);
-            Toast toast = Toast.makeText(getApplicationContext(), toastString, duration);
+            Toast toast = Toast.makeText(getApplicationContext(), toastString, Toast.LENGTH_SHORT);
             toast.show();
         }
 
         @Override public void onStartTrackingTouch(SeekBar seekBar) {}
         @Override public void onStopTrackingTouch(SeekBar seekBar) {}
+    }
+
+    private class SpinnerToastHandler implements AdapterView.OnItemSelectedListener {
+
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            if(userIsInteracting) {
+                GenerationUXInput currentInputs = getInputs();
+                final String toastString = "Notes played in " + currentInputs.ordering.name() + " order";
+                Toast toast = Toast.makeText(getApplicationContext(), toastString, Toast.LENGTH_SHORT);
+
+                toast.show();
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {}
     }
 
     private static class GenerationTriggerHandler implements View.OnClickListener {
